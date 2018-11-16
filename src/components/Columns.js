@@ -8,16 +8,17 @@ const StyledColumnContainer = styled.div`
 `;
 
 class Columns extends Component {
-  state = {};
+  state = {
+    colArr: [1, 2, 3, 4, 5, 6]
+  };
   render() {
+    const { values } = this.props;
+    const { colArr } = this.state;
     return (
       <StyledColumnContainer>
-        <Column />
-        <Column />
-        <Column />
-        <Column />
-        <Column />
-        <Column />
+        {colArr.map(col => (
+          <Column values={values} key={col} />
+        ))}
       </StyledColumnContainer>
     );
   }

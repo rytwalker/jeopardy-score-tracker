@@ -25,7 +25,7 @@ const StyledColumn = styled.div`
     justify-content: center;
     padding: 2.6rem;
     border-radius: 5px;
-    background: #0984e3;
+    /* background: #0984e3; */
     color: #ffeaa7;
     width: 100%;
     margin-bottom: 2rem;
@@ -48,6 +48,7 @@ class Column extends Component {
   };
   render() {
     const { category } = this.state;
+    const { values } = this.props;
     return (
       <StyledColumn>
         <input
@@ -57,11 +58,9 @@ class Column extends Component {
           value={category}
           onChange={this.handleInputChange}
         />
-        <PointBox value={200} />
-        <PointBox value={400} />
-        <PointBox value={600} />
-        <PointBox value={800} />
-        <PointBox value={1000} />
+        {values.map((v, i) => (
+          <PointBox value={values[i]} key={values[i]} />
+        ))}
       </StyledColumn>
     );
   }
